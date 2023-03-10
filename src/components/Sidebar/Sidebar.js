@@ -19,7 +19,7 @@ const Sidebar = () => {
         <img className="sub-logo" src={LogoSub} alt="slobodan" />
       </Link>
       <nav>
-        <NavLink exact="true" activeclassname="active" to="/">
+        <NavLink exact="true" activeclassname="active" to="/home">
           <FontAwesomeIcon icon={faHome} color="#4d4d4d" />
         </NavLink>
         <NavLink

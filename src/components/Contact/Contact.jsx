@@ -34,17 +34,24 @@ const Contact = () => {
           </p>
           <div className="contact-form">
             <form>
-              <ul>
-                <li className="half">
-                  <input type="text" name="name" placeholder="Name" required />
-                </li>
-                <li className="half">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                  />
+              <ul className="contact-ul">
+                <li className="form-flex">
+                  <li className="half">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Name"
+                      required
+                    />
+                  </li>
+                  <li className="half">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                  </li>
                 </li>
                 <li>
                   <input
@@ -52,6 +59,7 @@ const Contact = () => {
                     type="text"
                     name="Subject"
                     required
+                    style={{ width: '100%' }}
                   />
                 </li>
                 <li>

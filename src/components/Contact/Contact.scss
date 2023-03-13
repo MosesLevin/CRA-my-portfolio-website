@@ -1,11 +1,78 @@
-.contact-from {
-  width: 100%;
-  margin-top: 20px;
+// .contact-form {
+//   width: 100%;
+//   margin-top: 50px;
 
-  ul {
+//   .contact-ul {
+//     padding: 0;
+//     margin: 0;
+
+//     li {
+//       text-align: start;
+//       padding: 0;
+//       margin: 0;
+//       list-style: none;
+//       margin-bottom: 10px;
+//       overflow: hidden;
+//       display: block;
+//       position: relative;
+//       opacity: 0;
+//       animation: fadeInUp 2s 2s;
+//       animation-fill-mode: forwards;
+//     }
+//     li.half {
+//       width: 49%;
+//       margin-left: 2%;
+//       float: left;
+//       clear: none;
+//     }
+//     &:first-child {
+//       margin-left: 0;
+//     }
+//   }
+
+//   //   still in .contact-form, we want to target the inputs to style them
+//   input[type='text'],
+//   input[type='email'] {
+//     width: 100%;
+//     border: 0;
+//     background: #115173;
+//     height: 50px;
+//     font-size: 16px;
+//     color: #fff;
+//     padding: 0 20px;
+//     box-sizing: border-box;
+//   }
+//   textarea {
+//     width: 100%;
+//     border: 0;
+//     background: #115173;
+//     height: 50px;
+//     font-size: 16px;
+//     color: #fff;
+//     padding: 20px;
+//     min-height: 150px;
+//     box-sizing: border-box;
+//   }
+// }
+
+.contact-form {
+  width: 100%;
+  margin-top: 50px;
+
+  .contact-ul {
     padding: 0;
     margin: 0;
 
+    // make each li item class diff, access to changesizes
+    // :nth-child(2) {
+    //   font-size: 5vw;
+    //   padding: 0.1em;
+    //   color: white;
+    //   margin: 10px;
+    //   border-radius: 3px;
+    //   background: yellowgreen;
+    //   border: 5px solid black;
+    // }
     li {
       padding: 0;
       margin: 0;
@@ -18,5 +85,39 @@
       animation: fadeInUp 2s 2s;
       animation-fill-mode: forwards;
     }
+    .form-flex {
+      display: flex;
+      gap: 1em;
+    }
+    li.half {
+      width: 50%;
+    }
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  //   still in .contact-form, we want to target the HTML inputs to style them
+  input[type='text'],
+  input[type='email'] {
+    width: 100%;
+    border: 0;
+    background: #115173;
+    height: 50px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  textarea {
+    width: 100%;
+    border: 0;
+    background: #115173;
+    height: 50px;
+    font-size: 16px;
+    color: #fff;
+    padding: 20px;
+    min-height: 150px;
+    box-sizing: border-box;
   }
 }

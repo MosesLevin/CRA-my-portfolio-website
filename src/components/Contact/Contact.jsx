@@ -1,18 +1,43 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters/AnimatedLetters'
 import './Contact.scss'
+import emailjs from '@emailjs/browser'
 
 // like all components with animated letters we need the useEffect and the state to change the class on hover animation
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
+  const refForForm = useRef()
 
   useEffect(() => {
     setTimeout(() => {
       setLetterClass('text-animate-hover')
     }, 3000)
-  })
+  }, [])
+  // the function recieves the onSubmit method and we send to emailJS
+  const sendEmail = (recievedSubmitPressEvent) => {
+    recievedSubmitPressEvent.preventDefault()
+
+    // send an email :
+    // emailjs syntax in their documentation, recieves arguments in order, service_id, template_id, form reference, user_token
+    emailjs
+      .sendForm(
+        'gmail',
+        'template_ykpnxx2',
+        refForForm.current,
+        'g5ZgU51e7XgcCzYhR'
+      )
+      .then(
+        () => {
+          alert('Message successfuly sent!')
+          window.location.reload(false)
+        },
+        () => {
+          alert('Failed to send the message, please try again')
+        }
+      )
+  }
   return (
     <>
       <div className="container contact-page">
@@ -33,25 +58,20 @@ const Contact = () => {
             a conversation.
           </p>
           <div className="contact-form">
-            <form>
+            <form ref={refForForm} onSubmit={sendEmail}>
               <ul className="contact-ul">
-                <li className="form-flex">
-                  <li className="half">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Name"
-                      required
-                    />
-                  </li>
-                  <li className="half">
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email"
-                      required
-                    />
-                  </li>
+                {/* <li className="form-flex"> */}
+                <li className="half">
+                  <input type="text" name="name" placeholder="Name" required />
+                </li>
+                <li className="half">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                  />
+                  {/* </li> */}
                 </li>
                 <li>
                   <input

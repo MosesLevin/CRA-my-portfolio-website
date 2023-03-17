@@ -3,6 +3,7 @@ import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters/AnimatedLetters'
 import './Contact.scss'
 import emailjs from '@emailjs/browser'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 // like all components with animated letters we need the useEffect and the state to change the class on hover animation
 
@@ -23,18 +24,17 @@ const Contact = () => {
     // emailjs syntax in their documentation, recieves arguments in order, service_id, template_id, form reference, user_token
     emailjs
       .sendForm(
-        'gmail',
+        'service_m3bjstu',
         'template_ykpnxx2',
         refForForm.current,
         'g5ZgU51e7XgcCzYhR'
       )
       .then(
-        () => {
-          alert('Message successfuly sent!')
-          window.location.reload(false)
+        (result) => {
+          alert('success')
         },
-        () => {
-          alert('Failed to send the message, please try again')
+        (error) => {
+          alert('failed')
         }
       )
   }
@@ -60,24 +60,29 @@ const Contact = () => {
           <div className="contact-form">
             <form ref={refForForm} onSubmit={sendEmail}>
               <ul className="contact-ul">
-                {/* <li className="form-flex"> */}
-                <li className="half">
-                  <input type="text" name="name" placeholder="Name" required />
-                </li>
-                <li className="half">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    required
-                  />
-                  {/* </li> */}
-                </li>
+                <div className="form-flex">
+                  <li className="half">
+                    <input
+                      type="text"
+                      name="from_name"
+                      placeholder="Name"
+                      required
+                    />
+                  </li>
+                  <li className="half">
+                    <input
+                      type="email"
+                      name="email_id"
+                      placeholder="Email"
+                      required
+                    />
+                  </li>
+                </div>
                 <li>
                   <input
                     placeholder="Subject"
                     type="text"
-                    name="Subject"
+                    name="subject_name"
                     required
                     style={{ width: '100%' }}
                   />
@@ -90,11 +95,31 @@ const Contact = () => {
                   ></textarea>
                 </li>
                 <li>
-                  <input type="submit" className="flat-button" value="SEND" />
+                  <input type="submit" className="flat-button" value="Send" />
                 </li>
               </ul>
             </form>
           </div>
+        </div>
+        <div className="info-map">
+          Moses Levin,
+          <br />
+          Passauer Str. 5-7, 10789
+          <br />
+          Berlin
+          <br />
+          <span>moses.levin14@gmail.com</span>
+        </div>
+        <div className="map-wrap">
+          {/* React leaflet with leaflet, center= coordinates, and zoom, from leaflet docu */}
+          <MapContainer center={[52.5119, 13.3258]} zoom={13}>
+            {/* the actual map file from openstreetmap */}
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            {/* red marker */}
+            <Marker position={[52.5119, 13.3258]}>
+              <Popup>Moses lives somewhere in Berlin</Popup>
+            </Marker>
+          </MapContainer>
         </div>
       </div>
       <Loader type="pacman" />

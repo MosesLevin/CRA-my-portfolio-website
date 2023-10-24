@@ -3,6 +3,8 @@ import Logo from '../../../assets/images/logo-s.png'
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap-trial'
 import { DrawSVGPlugin } from 'gsap-trial/DrawSVGPlugin'
+import Logo2 from '../../../assets/images/M-logo1_v2copy.png'
+import Logo3 from '../../../assets/images/M-logo-lines1.png'
 
 const AnimatedLogo = () => {
   const bgRef = useRef()
@@ -38,7 +40,7 @@ const AnimatedLogo = () => {
 
   return (
     <div className="logo-container" ref={bgRef}>
-      <img className="solid-logo" src={Logo} ref={solidLogoRef} alt="S" />
+      <img className="solid-logo" src={Logo2} ref={solidLogoRef} alt="S" />
       <svg
         className="svg-animation"
         width="559pt"
